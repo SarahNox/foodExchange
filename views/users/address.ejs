@@ -1,5 +1,6 @@
 <h1>Introduce Your Address</h1>
 <form action="/address" method="POST" id="form-container">
+
   <label for="street">Street</label>
   <input type="text" name="street" placeholder="Trafalgar Square">
   <br><br>
@@ -18,11 +19,13 @@
   <label for="city">City</label>
   <input type="text" name="city" placeholder="London">
   <br><br>
+
   <% if (typeof(message) != "undefined") { %>
     <div class="error-message"><%= message %></div>
   <% } %>
   <br><br>
   <button>Confirm</button>
+
   <p class="address-message">
     <a href="/login">Login</a>
   </p>

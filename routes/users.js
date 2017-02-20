@@ -7,6 +7,8 @@ const bcrypt         = require("bcrypt");
 const bcryptSalt     = 10;
 const ensureLogin = require("connect-ensure-login");
 const passport      = require("passport");
+var app = express();
+
 
 router.get("/search-offer", ensureLogin.ensureLoggedIn(), (req, res) => {
   res.render("users/search-offer", { user: req.user });
@@ -24,16 +26,10 @@ router.get("/address", (req, res, next) => {
   res.render("users/address");
 });
 
-router.post("/address", (req, res, next) => {
-  var address = {
-    street: req.body.street,
-    houseNumber: req.body.houseNumber,
-    flat: req.body.flat,
-    door: req.body.door,
-    city: req.body.city,
-    postal_code: req.body.postal_code
-  // res.render("users/address");
-}});
+
+router.get("/address", (req, res, next) => {
+  res.render("users/address");
+});
 
 router.post("/login", passport.authenticate("local", {
   successRedirect: "/search-offer",
@@ -43,20 +39,20 @@ router.post("/login", passport.authenticate("local", {
 }));
 
 router.post("/signup", (req, res, next) => {
-  var username = req.body.username;
-  var password = req.body.password;
+  app.locals.username = req.body.username;
+  app.locals.password = req.body.password;
 
-  if (username === "" || password === "") {
+  if (app.locals.username === "" || app.locals.password === "") {
     res.render("users/signup", { message: "Indicate username and password" });
     return;
   }
-
-  User.findOne({ username }, "username", (err, user) => {
+  User.findOne({username: app.locals.username}, "username", (err, user) => {
     if (user !== null) {
       res.render("users/signup", { message: "The username already exists" });
       return;
+    } else {
+      res.render("users/address")
     }
-
     var salt     = bcrypt.genSaltSync(bcryptSalt);
     var hashPass = bcrypt.hashSync(password, salt);
 
@@ -72,7 +68,40 @@ router.post("/signup", (req, res, next) => {
         res.redirect("/address");
       }
     });
+
   });
+});
+
+router.post("/address", (req, res, next) => {
+
+  var address = {
+    street: req.body.street,
+    number: req.body.houseNumber,
+    flat:req.body.flat,
+    door: req.body.door,
+    postal_code: req.body.postal_code,
+    city: req.body.city
+  }
+
+      var salt     = bcrypt.genSaltSync(bcryptSalt);
+      var hashPass = bcrypt.hashSync(app.locals.password, salt);
+      console.log(hashPass);
+
+      var newUser = User({
+        username: app.locals.username,
+        password: hashPass,
+        address
+      });
+
+      newUser.save((err) => {
+        console.log(err);
+        if (err) {
+          res.render("users/address", { message: "It´s necessary" });
+        } else {
+          res.redirect("/search-offer");
+        }
+      });
+
 });
 
 router.get("/logout", (req, res) => {
