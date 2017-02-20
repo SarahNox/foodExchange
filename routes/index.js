@@ -17,7 +17,7 @@ router.get('/api/places',(req, res, next) => {
   })
 })
 
-
+//CODE FOR GOOGLE API
 
 router.post('/new',(req, res, next) => {
   // Get Params from POST
