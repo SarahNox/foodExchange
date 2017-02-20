@@ -20,6 +20,21 @@ router.get("/login", (req, res, next) => {
   res.render("users/login");
 });
 
+router.get("/address", (req, res, next) => {
+  res.render("users/address");
+});
+
+router.post("/address", (req, res, next) => {
+  var address = {
+    street: req.body.street,
+    houseNumber: req.body.houseNumber,
+    flat: req.body.flat,
+    door: req.body.door,
+    city: req.body.city,
+    postal_code: req.body.postal_code
+  // res.render("users/address");
+}});
+
 router.post("/login", passport.authenticate("local", {
   successRedirect: "/search-offer",
   failureRedirect: "/login",
@@ -51,11 +66,10 @@ router.post("/signup", (req, res, next) => {
     });
 
     newUser.save((err) => {
-      console.log(err);
       if (err) {
         res.render("users/signup", { message: "The username already exists" });
       } else {
-        res.redirect("/login");
+        res.redirect("/address");
       }
     });
   });

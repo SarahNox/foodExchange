@@ -1,17 +1,12 @@
+<html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<link rel='stylesheet' href='/stylesheets/style.css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link rel='stylesheet' href='/stylesheets/style.css'>
 </head>
-<% if (user) { %>
-  <div>
-    <h1>Who is the best developer?</h1>
-    <h1>You are, <span style="color: red;"><%= user.username%></span>. You are. </h1>
-  </div>
-
-  <div id="map"></div>
-      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApAnHRetDwYunvSmMtMTpiGVBNFOEjvZ8"></script>
-      <script type="text/javascript" src="javascripts/main.js"></script>
-
-
-<% } %>
-<a href="/logout">Logout</a>
+<h1> Search - Offer </h1>
+  <a href="/logout">Logout</a>
+<br><br>
+<div id="map"></div>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApAnHRetDwYunvSmMtMTpiGVBNFOEjvZ8"></script>
+  <script type="text/javascript" src="javascripts/main.js"></script>
+</html>
