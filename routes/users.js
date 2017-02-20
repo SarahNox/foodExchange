@@ -26,6 +26,7 @@ router.get("/address", (req, res, next) => {
   res.render("users/address");
 });
 
+
 router.get("/address", (req, res, next) => {
   res.render("users/address");
 });
@@ -52,6 +53,22 @@ router.post("/signup", (req, res, next) => {
     } else {
       res.render("users/address")
     }
+    var salt     = bcrypt.genSaltSync(bcryptSalt);
+    var hashPass = bcrypt.hashSync(password, salt);
+
+    var newUser = User({
+      username,
+      password: hashPass
+    });
+
+    newUser.save((err) => {
+      if (err) {
+        res.render("users/signup", { message: "The username already exists" });
+      } else {
+        res.redirect("/address");
+      }
+    });
+
   });
 });
 

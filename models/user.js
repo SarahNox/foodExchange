@@ -10,10 +10,9 @@ const userSchema = new Schema({
     flat: String,
     door: String,
     city: String,
-    postal_code: String,
-  }
-},
-{
+    postal_code: String
+  },
+}, {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 });
 
