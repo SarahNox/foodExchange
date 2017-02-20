@@ -8,9 +8,8 @@ const bcryptSalt     = 10;
 const ensureLogin = require("connect-ensure-login");
 const passport      = require("passport");
 
-router.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
-  console.log("I'm in private page method")
-  res.render("users/private-page", { user: req.user });
+router.get("/search-offer", ensureLogin.ensureLoggedIn(), (req, res) => {
+  res.render("users/search-offer", { user: req.user });
 });
 
 router.get("/signup", (req, res, next) => {
@@ -22,7 +21,7 @@ router.get("/login", (req, res, next) => {
 });
 
 router.post("/login", passport.authenticate("local", {
-  successRedirect: "/private-page",
+  successRedirect: "/search-offer",
   failureRedirect: "/login",
   failureFlash: true,
   passReqToCallback: true
