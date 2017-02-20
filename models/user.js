@@ -3,9 +3,12 @@ const Schema   = mongoose.Schema;
 
 const userSchema = new Schema({
   username: String,
-  password: String,
-  search: [],
-  offer: [],
+  password: String
+  // address = {
+  //   street: String,
+  //   city: String,
+  //   postal_code: String
+  // }
 }, {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 });
