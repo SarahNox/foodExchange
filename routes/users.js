@@ -67,26 +67,21 @@ router.post("/address", (req, res, next) => {
   }
 
       var salt     = bcrypt.genSaltSync(bcryptSalt);
-      var hashPass = bcrypt.hashSync(password, salt);
-
+      var hashPass = bcrypt.hashSync(app.locals.password, salt);
+      console.log(hashPass);
 
       var newUser = User({
         username: app.locals.username,
-        pasword: app.locals.password,
-        street,
-        number,
-        flat,
-        door,
-        postal_code,
-        city
+        password: hashPass,
+        address
       });
 
       newUser.save((err) => {
         console.log(err);
         if (err) {
-          res.render("users/signup", { message: "The username already exists" });
+          res.render("users/address", { message: "It´s necessary" });
         } else {
-          res.redirect("/address");
+          res.redirect("/search-offer");
         }
       });
 
