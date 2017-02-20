@@ -9,7 +9,8 @@ const ensureLogin = require("connect-ensure-login");
 const passport      = require("passport");
 
 router.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
-  res.render("users/private", { user: req.user });
+  console.log("I'm in private page method")
+  res.render("users/private-page", { user: req.user });
 });
 
 router.get("/signup", (req, res, next) => {

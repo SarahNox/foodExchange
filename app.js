@@ -16,36 +16,35 @@ const flash              = require('connect-flash');
 
 mongoose.connect('mongodb://localhost:27017/foodExchange');
 
-// var index = require('./routes/index');
+var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
 
 app.use(flash());
-app.use(passport.initialize());
-app.use(passport.session());
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(require('node-sass-middleware')({
-//   src: path.join(__dirname, 'public'),
-//   dest: path.join(__dirname, 'public'),
-//   indentedSyntax: false,
-//   sourceMap: true
-// }));
+app.use(require('node-sass-middleware')({
+  src: path.join(__dirname, 'public'),
+  dest: path.join(__dirname, 'public'),
+  indentedSyntax: false,
+  sourceMap: true
+}));
 app.use('/bower_components', express.static(path.join(__dirname, 'bower_components/')))
 app.use(express.static(path.join(__dirname, 'public')));
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.use(session({
+  secret: 'passport-local-strategy',
+  resave: false,
+  saveUninitialized: true,
+  store: new MongoStore( { mongooseConnection: mongoose.connection })
+}))
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-
-// app.use('/', index);
-app.use('/', users);
+app.use(passport.initialize());
+app.use(passport.session());
 
 passport.serializeUser((user, cb) => {
   cb(null, user.id);
@@ -73,6 +72,20 @@ passport.use(new LocalStrategy({passReqToCallback: true}, (req, username, passwo
   });
 }));
 
+
+
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
+app.use('/', index);
+app.use('/', users);
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -80,12 +93,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-app.use(session({
-  secret: 'passport-local-strategy',
-  resave: false,
-  saveUninitialized: true,
-  store: new MongoStore( { mongooseConnection: mongoose.connection })
-}))
+
 
 // error handler
 app.use(function(err, req, res, next) {
