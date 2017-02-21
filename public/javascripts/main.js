@@ -13,13 +13,13 @@ $(document).ready(function(){
         zoom: 15,
         center: sol
       });
-      
+
       users.forEach(function(user){
         let title = user.username;
         let position = {
-          lat: 41.4,
+          lat: 41.3977351,
           // user.location.coordinates[1],
-          lng: 2.2
+          lng: 2.1903
           // user.location.coordinates[0]
         };
 
