@@ -4,7 +4,7 @@ const Schema   = mongoose.Schema;
 const searchSchema = new Schema({
   search: [],
   owner: Schema.Types.ObjectId
-  //userSchema
+  // userSchema
 });
 
 const Search = mongoose.model("Search", searchSchema);

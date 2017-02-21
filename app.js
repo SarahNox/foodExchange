@@ -35,7 +35,7 @@ app.use(require('node-sass-middleware')({
 }));
 // view engine setup
 
-app.use('/bower_components', express.static(path.join(__dirname, 'bower_components/')))
+// app.use('/bower_components', express.static(path.join(__dirname, 'bower_components/')))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({

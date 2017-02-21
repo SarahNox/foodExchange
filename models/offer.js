@@ -3,7 +3,8 @@ const Schema   = mongoose.Schema;
 
 const offerSchema = new Schema({
   offer: [],
-  owner: userSchema
+  owner: Schema.Types.ObjectId
+  // userSchema
 });
 
 const Offer = mongoose.model("Offer", offerSchema);
