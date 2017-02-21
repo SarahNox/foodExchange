@@ -65,27 +65,31 @@ router.post("/address", (req, res, next) => {
     postal_code: req.body.postal_code,
     city: req.body.city
   }
+      var salt     = bcrypt.genSaltSync(bcryptSalt);
+      var hashPass = bcrypt.hashSync(app.locals.password, salt);
+      console.log(hashPass);
 
-  var salt     = bcrypt.genSaltSync(bcryptSalt);
-  var hashPass = bcrypt.hashSync(app.locals.password, salt);
-  console.log(hashPass);
+      var newUser = User({
+        username: app.locals.username,
+        password: hashPass,
+        address
+      });
 
-  var newUser = User({
-    username: app.locals.username,
-    password: hashPass,
-    address
-  });
-
-  newUser.save((err) => {
-    console.log(err);
-    if (err) {
-      res.render("users/address", { message: "It´s necessary" });
-    } else {
-      res.redirect("/search-offer");
-    }
-  });
-
+      newUser.save((err) => {
+        console.log(err);
+        if (err) {
+          res.render("users/address", { message: "It´s necessary" });
+        } else {
+          req.body.username = app.locals.username;
+          req.body.password = app.locals.password;
+          passport.authenticate("local")(req, res, function(){
+            res.redirect("/search-offer");
+          })
+        }
+    });
 });
+
+
 
 router.get("/logout", (req, res) => {
   req.logout();
