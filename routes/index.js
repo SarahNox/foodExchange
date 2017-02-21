@@ -1,9 +1,16 @@
 var express = require('express');
 var router = express.Router();
-const Place = require('../models/search');
+const User = require('../models/user');
 
+router.get('/api', function(req, res, next){
+  User.find((err, users) => {
+    if (err) { next(err); }
+    else {
+      res.json(users);
+    }
+  })
+});
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'foodExchange' });
 });
