@@ -82,11 +82,18 @@ router.post("/address", (req, res, next) => {
         if (err) {
           res.render("users/address", { message: "It´s necessary" });
         } else {
-          res.redirect("/search-offer");
+          req.body.username = app.locals.username;
+          req.body.password = app.locals.password;
+          passport.authenticate("local")(req, res, function(){
+            res.redirect("/search-offer");
+          })
+
         }
       });
 
 });
+
+
 
 router.get("/logout", (req, res) => {
   req.logout();
