@@ -2,8 +2,9 @@ const mongoose = require("mongoose");
 const Schema   = mongoose.Schema;
 
 const searchSchema = new Schema({
-  search: Array
-  // owner: UserSchema
+  search: [],
+  owner: Schema.Types.ObjectId
+  // userSchema
 });
 
 const Search = mongoose.model("Search", searchSchema);
