@@ -8,6 +8,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'foodExchange' });
 });
 
+// can be separate
 router.get('/api/places',(req, res, next) => {
   Place.find((error, places) => {
     if (error) { next(error); }
@@ -16,6 +17,7 @@ router.get('/api/places',(req, res, next) => {
     }
   })
 })
+//
 
 //CODE FOR GOOGLE API
 
