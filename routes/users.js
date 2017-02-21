@@ -26,7 +26,6 @@ router.get("/address", (req, res, next) => {
   res.render("users/address");
 });
 
-
 router.get("/address", (req, res, next) => {
   res.render("users/address");
 });
@@ -66,7 +65,6 @@ router.post("/address", (req, res, next) => {
     postal_code: req.body.postal_code,
     city: req.body.city
   }
-
       var salt     = bcrypt.genSaltSync(bcryptSalt);
       var hashPass = bcrypt.hashSync(app.locals.password, salt);
       console.log(hashPass);
@@ -87,10 +85,8 @@ router.post("/address", (req, res, next) => {
           passport.authenticate("local")(req, res, function(){
             res.redirect("/search-offer");
           })
-
         }
-      });
-
+    });
 });
 
 
