@@ -18,8 +18,10 @@ var users = require('./routes/users');
 
 var app = express();
 
+app.set('layout', 'layouts/main-layout');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.use(expressLayouts);
 
 app.use(flash());
 
