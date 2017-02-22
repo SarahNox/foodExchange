@@ -58,8 +58,6 @@ router.post("/address", (req, res, next) => {
   var address = {
     street: req.body.street,
     number: req.body.houseNumber,
-    flat:req.body.flat,
-    door: req.body.door,
     postal_code: req.body.postal_code,
     city: req.body.city
   };
