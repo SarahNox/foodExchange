@@ -1,9 +1,4 @@
-<html>
-<head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-<body>
+<div class="main-container">
 <h1>Log in</h1>
 <form action="/login" method="POST" id="form-container">
   <div>
@@ -20,11 +15,10 @@
     <div class="error-message"><%= message %></div>
   <% } %>
   <div>
-    <input type="submit" value="Log In">
+    <input class="btn btn-primary" type="submit" value="Log In">
   </div>
   <br><br>
-<a href="/signup">Signup</a>
-<a href="/">Start Page</a>
+<a href="/signup" class="btn btn-info">Signup</a>
+<a href="/" class="btn btn-default">Start Page</a>
 </form>
-</body>
-</html>
+</div>

@@ -1,6 +1,3 @@
-// This example displays an address form, using the autocomplete feature
-// of the Google Places API to help users fill in the information.
-
 var placeSearch, autocomplete;
 var componentForm = {
   street_number: 'short_name',
@@ -12,14 +9,9 @@ var componentForm = {
 };
 
 function initAutocomplete() {
-  // Create the autocomplete object, restricting the search to geographical
-  // location types.
   autocomplete = new google.maps.places.Autocomplete(
       /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
       {types: ['geocode']});
-
-  // When the user selects an address from the dropdown, populate the address
-  // fields in the form.
   autocomplete.addListener('place_changed', fillInAddress);
 }
 
@@ -36,8 +28,6 @@ function fillInAddress() {
   $("#latitude").val(place.geometry.location.lat())
   $("#longitude").val(place.geometry.location.lng())
 
-  // Get each component of the address from the place details
-  // and fill the corresponding field on the form.
   for (var i = 0; i < place.address_components.length; i++) {
     var addressType = place.address_components[i].types[0];
     if (componentForm[addressType]) {
@@ -47,10 +37,6 @@ function fillInAddress() {
   }
 }
 // [END region_fillform]
-
-
-
-
 
 // [START region_geolocation]
 // Bias the autocomplete object to the user's geographical location,
