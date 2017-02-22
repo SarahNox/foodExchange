@@ -2,10 +2,10 @@
 <h1>Sign up</h1>
 <form action="/signup" method="POST" id="form-container">
   <label for="username">Username</label>
-  <input type="text" name="username" placeholder="Your Username">
+  <input type="text" name="username" placeholder="Your Username"></input>
   <br><br>
   <label for="password">Password</label>
-  <input type="password" name="password" placeholder="Your password">
+  <input type="password" name="password" placeholder="Your password"></input>
   <% if (typeof(message) != "undefined") { %>
     <div class="error-message"><%= message %></div>
   <% } %>

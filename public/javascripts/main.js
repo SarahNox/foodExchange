@@ -37,6 +37,30 @@ function fillInAddress() {
   }
 }
 
+// function getMyLocation() {
+//   if (navigator.geolocation) {
+//     navigator.geolocation.getCurrentPosition(showMapWithMyLocation);
+//   } else {
+//     alert('Oops, no geolocation support');
+//   }
+// }
+// //This function is inokved asynchronously by the HTML5 geolocation API.
+// function showMapWithMyLocation(position) {
+//   //The latitude and longitude values obtained from HTML 5 API.
+//   var latitude = position.coords.latitude;
+//   var longitude = position.coords.longitude;
+//     var myPosition = {
+//         lat: latitude,
+//         lng: longitude
+//     }
+//     map = new google.maps.Map(
+//         document.getElementById('map'),
+//         {
+//          zoom: 15,
+//          center: myPosition
+//         }
+//     );
+
 $(document).ready(function(){
   $.ajax({
     method: "GET",
