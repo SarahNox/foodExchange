@@ -62,19 +62,28 @@ router.post("/address", (req, res, next) => {
     door: req.body.door,
     postal_code: req.body.postal_code,
     city: req.body.city
-  }
+  };
+
+  var location = {
+   type: 'Point',
+   coordinates: [req.body.longitude, req.body.latitude]
+ };
+
+ console.log("this are the params: ", req.body)
+
       var salt     = bcrypt.genSaltSync(bcryptSalt);
       var hashPass = bcrypt.hashSync(app.locals.password, salt);
-      console.log(hashPass);
+
 
       var newUser = User({
         username: app.locals.username,
         password: hashPass,
+        location: location,
         address
       });
 
       newUser.save((err) => {
-        console.log(err);
+        // console.log(err);
         if (err) {
           res.render("users/address", { message: "It´s necessary" });
         } else {

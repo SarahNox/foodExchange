@@ -8,9 +8,11 @@ const userSchema = new Schema({
     street: String,
     number: String,
     city: String,
-    postal_code: String
+    postal_code: String,
   },
-}, {
+    location: { type: { type: String }, coordinates: [Number] }
+},
+{
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 });
 
