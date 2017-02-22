@@ -56,11 +56,10 @@ $(document).ready(function(){
       users.forEach(function(user){
         let title = user.username;
         let position = {
-          lat: 41.3977351,
-          // user.location.coordinates[1],
-          lng: 2.1903
-          // user.location.coordinates[0]
+          lat: user.location.coordinates[1],
+          lng: user.location.coordinates[0]
         };
+        console.log(position);
 
         var pin = new google.maps.Marker({ position, map, title  });
         markers.push(pin)
