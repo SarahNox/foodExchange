@@ -34,4 +34,4 @@ We implemented the solution on a Javascript basis as suggested.
 
 ## Problems / Mistakes
 
-My Git commits were not small and descriptive. I have to work on that as it will be difficult to fix now. Before adding anything now I have to pay more attention on that topic.
+a lot! :D
