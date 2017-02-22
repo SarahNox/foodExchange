@@ -44,14 +44,30 @@ $(document).ready(function(){
     success: function(users) {
       var users = users
       let markers = [];
-      const sol = {
-        lat: 41.3977351, lng: 2.1903
-      };
 
-      const map = new google.maps.Map(document.getElementById('map'), {
+      var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
-        center: sol
+        center: {lat: 41.375287, lng: 2.1468333}
+        // center is a start-point for geolocate : Plaza España Barcelona
       });
+      var infoWindow = new google.maps.InfoWindow({map: map});
+
+      if (navigator.geolocation) {
+         navigator.geolocation.getCurrentPosition(function(position) {
+           var pos = {
+             lat: position.coords.latitude,
+             lng: position.coords.longitude
+           };
+
+           infoWindow.setPosition(pos);
+           infoWindow.setContent('You are here');
+           map.setCenter(pos);
+         }, function() {
+           handleLocationError(true, infoWindow, map.getCenter());
+         });
+       } else {
+         handleLocationError(false, infoWindow, map.getCenter());
+       }
 
       users.forEach(function(user){
         let title = user.username;
@@ -59,9 +75,11 @@ $(document).ready(function(){
           lat: user.location.coordinates[1],
           lng: user.location.coordinates[0]
         };
+        // if search -> icon red, if offer -> icon green 'http://labs.google.com/ridefinder/images/mm_20_green.png'
+        let icon = 'http://labs.google.com/ridefinder/images/mm_20_red.png'
         console.log(position);
 
-        var pin = new google.maps.Marker({ position, map, title  });
+        var pin = new google.maps.Marker({ position, map, title, icon });
         markers.push(pin)
       });
     },
@@ -71,18 +89,18 @@ $(document).ready(function(){
   });
 });
 
-// function geolocate() {
-//   if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(function(position) {
-//       var geolocation = {
-//         lat: position.coords.latitude,
-//         lng: position.coords.longitude
-//       };
-//       var circle = new google.maps.Circle({
-//         center: geolocation,
-//         radius: position.coords.accuracy
-//       });
-//       autocomplete.setBounds(circle.getBounds());
-//     });
-//   }
-// }
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      var circle = new google.maps.Circle({
+        center: geolocation,
+        radius: position.coords.accuracy
+      });
+      autocomplete.setBounds(circle.getBounds());
+    });
+  }
+}
