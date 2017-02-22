@@ -2,7 +2,7 @@
     <form action="/address" method="POST" id="form-container">
     <div id="locationField">
       <input id="autocomplete" placeholder="Enter your address"
-              type="text"></input>
+          onFocus="geolocate()" type="text"></input>
               <%# onFocus="geolocate()"%>
     </div>
     <table id="address">

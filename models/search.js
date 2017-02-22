@@ -9,5 +9,3 @@ const searchSchema = new Schema({
 
 const Search = mongoose.model("Search", searchSchema);
 module.exports = Search;
-
-// location: { type: { type: String }, coordinates: [Number] }
