@@ -69,7 +69,7 @@
       <% foods.forEach((food) => { %>
         <li>
           <%= food.foodName %><br><br>
-          <button class="btn btn-danger btn-sm" id="delete-item">Delete Item</button>
+          <a class="btn btn-danger btn-sm" href="/<%= food._id %>/delete/">Delete Item</a>
         </li>
       <% }) %>
     </ul>
