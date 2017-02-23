@@ -5,6 +5,7 @@ body {
 
 a {
   color: #00B7FF;
+  position: relative;
 }
 
 #map {
@@ -80,9 +81,4 @@ header {
 .header-right {
   float: left;
   text-align: center;
-}
-
-.logout-button {
-  float: right;
-  padding-top: 10px;
 }
