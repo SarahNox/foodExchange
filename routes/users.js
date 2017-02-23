@@ -100,8 +100,6 @@ router.post("/address", (req, res, next) => {
 });
 
 router.post("/offer", (req, res, next) => {
-
-
   var foodName = req.body.foodName;
 
   var address = {
