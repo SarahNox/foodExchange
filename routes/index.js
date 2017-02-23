@@ -1,12 +1,22 @@
 var express = require('express');
 var router = express.Router();
 const User = require('../models/user');
+const Food = require('../models/food');
 
 router.get('/api', function(req, res, next){
   User.find((err, users) => {
     if (err) { next(err); }
     else {
       res.json(users);
+    }
+  })
+});
+
+router.get('/foods', function(req, res, next){
+  User.find((err, foods) => {
+    if (err) { next(err); }
+    else {
+      res.json(foods);
     }
   })
 });
