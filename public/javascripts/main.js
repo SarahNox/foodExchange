@@ -98,7 +98,7 @@ $(document).ready(function(){
       let markersFood = [];
 
       foods.forEach(function(food){
-        let title = food.foodname;
+        let title = food.foodName;
         let position = {
           lat: food.location.coordinates[1],
           lng: food.location.coordinates[0]
