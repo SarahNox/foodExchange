@@ -35,6 +35,7 @@ function fillInAddress() {
   }
 }
 
+
 $(document).ready(function(){
 
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -69,7 +70,6 @@ $(document).ready(function(){
       var users = users
       let markers = [];
 
-
       users.forEach(function(user){
         let title = user.username;
         let position = {
@@ -89,7 +89,6 @@ $(document).ready(function(){
     }
   });
 
-  //SHOW FOODS
 
   $.ajax({
     method: "GET",
@@ -105,7 +104,6 @@ $(document).ready(function(){
         };
         let icon;
         if (food.isOffer === false) {
-        // if search -> icon red, if offer -> icon green 'http://labs.google.com/ridefinder/images/mm_20_green.png'
         icon = 'http://labs.google.com/ridefinder/images/mm_20_red.png' }
         else {
          icon = 'http://labs.google.com/ridefinder/images/mm_20_green.png'

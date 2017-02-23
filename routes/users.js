@@ -13,10 +13,6 @@ router.get("/search-offer", ensureLogin.ensureLoggedIn(), (req, res) => {
   res.render("users/search-offer", { user: req.user });
 });
 
-// router.get("/offer", ensureLogin.ensureLoggedIn(), (req, res) => {
-//   res.render("users/offer", { user: req.user });
-// });
-
 router.get("/signup", (req, res, next) => {
   res.render("users/signup");
 });
@@ -64,35 +60,35 @@ router.post("/address", (req, res, next) => {
   };
 
   var location = {
-   type: 'Point',
-   coordinates: [req.body.longitude, req.body.latitude]
- };
+    type: 'Point',
+    coordinates: [req.body.longitude, req.body.latitude]
+  };
 
- console.log("this are the params: ", req.body)
+  console.log("this are the params: ", req.body)
 
-      var salt     = bcrypt.genSaltSync(bcryptSalt);
-      var hashPass = bcrypt.hashSync(app.locals.password, salt);
+  var salt     = bcrypt.genSaltSync(bcryptSalt);
+  var hashPass = bcrypt.hashSync(app.locals.password, salt);
 
 
-      var newUser = User({
-        username: app.locals.username,
-        password: hashPass,
-        location: location,
-        address
-      });
+  var newUser = User({
+    username: app.locals.username,
+    password: hashPass,
+    location: location,
+    address
+  });
 
-      newUser.save((err) => {
-        // console.log(err);
-        if (err) {
-          res.render("users/address", { message: "It´s necessary" });
-        } else {
-          req.body.username = app.locals.username;
-          req.body.password = app.locals.password;
-          passport.authenticate("local")(req, res, function(){
-            res.redirect("/search-offer");
-          })
-        }
-    });
+  newUser.save((err) => {
+    // console.log(err);
+    if (err) {
+      res.render("users/address", { message: "It´s necessary" });
+    } else {
+      req.body.username = app.locals.username;
+      req.body.password = app.locals.password;
+      passport.authenticate("local")(req, res, function(){
+        res.redirect("/search-offer");
+      })
+    }
+  });
 });
 
 router.post("/offer", (req, res, next) => {
@@ -108,63 +104,62 @@ router.post("/offer", (req, res, next) => {
   var isOffer = req.body.isOffer;
 
   var location = {
-   type: 'Point',
-   coordinates: [req.body.longitude, req.body.latitude]
- };
+    type: 'Point',
+    coordinates: [req.body.longitude, req.body.latitude]
+  };
 
-      var newFood = Food({
-        foodName: foodName,
-        location: location,
-        isOffer: isOffer,
-        address
-      });
+  var newFood = Food({
+    foodName: foodName,
+    location: location,
+    isOffer: isOffer,
+    address
+  });
 
-      newFood.save((err) => {
-        // console.log(err);
-        if (err) {
-          res.render("/offer", { message: "Dame argo paaayoooo!!" });
-        } else {
-            res.redirect("/offer")
-          }})
-        });
+  newFood.save((err) => {
+    // console.log(err);
+    if (err) {
+      res.render("/offer", { message: "Dame argo paaayoooo!!" });
+    } else {
+      res.redirect("/offer")
+    }})
+  });
 
-router.post("/search", (req, res, next) => {
-          var foodName = req.body.foodName;
+  router.post("/search", (req, res, next) => {
+    var foodName = req.body.foodName;
 
-          var address = {
-            street: req.body.street,
-            number: req.body.houseNumber,
-            postal_code: req.body.postal_code,
-            city: req.body.city
-          };
+    var address = {
+      street: req.body.street,
+      number: req.body.houseNumber,
+      postal_code: req.body.postal_code,
+      city: req.body.city
+    };
 
-          var isOffer = req.body.isOffer;
+    var isOffer = req.body.isOffer;
 
-          var location = {
-           type: 'Point',
-           coordinates: [req.body.longitude, req.body.latitude]
-         };
+    var location = {
+      type: 'Point',
+      coordinates: [req.body.longitude, req.body.latitude]
+    };
 
-              var newFood = Food({
-                foodName: foodName,
-                location: location,
-                isOffer: isOffer,
-                address
-              });
+    var newFood = Food({
+      foodName: foodName,
+      location: location,
+      isOffer: isOffer,
+      address
+    });
 
-              newFood.save((err) => {
-                // console.log(err);
-                if (err) {
-                  res.render("/search", { message: "Dame argo paaayoooo!!" });
-                } else {
-                    res.redirect("/search")
-                  }})
-                });
+    newFood.save((err) => {
+      if (err) {
+        res.render("/search", { message: "Dame argo paaayoooo!!" });
+      } else {
+        res.redirect("/search")
+      }})
+    });
 
 
-router.get("/logout", (req, res) => {
-  req.logout();
-  res.redirect("/login");
-});
+    router.get("/logout", (req, res) => {
+      req.logout();
+      res.redirect("/login");
+    });
 
 module.exports = router;
