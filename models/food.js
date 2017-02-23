@@ -4,6 +4,7 @@ const Schema   = mongoose.Schema;
 const foodSchema = new Schema({
   owner: Schema.Types.ObjectId,
   request: Schema.Types.ObjectId,
+  isOffer: Boolean,
   foodName: String,
   quantity: Number,
   address: {
