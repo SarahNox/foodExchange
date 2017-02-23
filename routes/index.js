@@ -13,7 +13,7 @@ router.get('/api', function(req, res, next){
 });
 
 router.get('/foods', function(req, res, next){
-  User.find((err, foods) => {
+  Food.find((err, foods) => {
     if (err) { next(err); }
     else {
       res.json(foods);
