@@ -121,3 +121,23 @@ $(document).ready(function(){
     }
   });
 });
+
+// function deleteOneRegister (foodName) {
+// 		$.ajax({
+// 	    url: "/foods",
+// 	    method: "DELETE",
+// 	    success: function (response) {
+// 	      console.log(response);
+// 	    },
+// 	    error: function (err) {
+// 	      console.log(err);
+// 	    },
+// 	  });
+// 	}
+//
+// $('#delete-one').on('click', (e) => {
+//   console.log("clicked the button");
+//     e.preventDefault();
+// 		var foodName = $('food.foodName').val();
+// 		url.deleteOneRegister(foodName);
+//   });

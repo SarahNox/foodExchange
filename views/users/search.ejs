@@ -64,11 +64,12 @@
     </div>
   </div>
   <div class="col-md-5 col-md-offset-2 blog-sidebar">
-    <h1>List of Searches</h1>
+    <h1>my pending searches</h1>
     <ul>
       <% foods.forEach((food) => { %>
         <li>
-          <%= food.foodName%>
+          <%= food.foodName %><br><br>
+          <button class="btn btn-danger btn-sm" id="delete-item">Delete Item</button>
         </li>
       <% }) %>
     </ul>
