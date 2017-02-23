@@ -2,8 +2,9 @@ var express = require('express');
 var router = express.Router();
 const User = require('../models/user');
 const Food = require('../models/food');
+const ensureLogin = require("connect-ensure-login");
 
-router.get('/api', function(req, res, next){
+router.get('/api', ensureLogin.ensureLoggedIn(), function(req, res, next){
   User.find((err, users) => {
     if (err) { next(err); }
     else {
@@ -12,7 +13,7 @@ router.get('/api', function(req, res, next){
   })
 });
 
-router.get('/foods', function(req, res, next){
+router.get('/foods', ensureLogin.ensureLoggedIn(), function(req, res, next){
   Food.find((err, foods) => {
     if (err) { next(err); }
     else {
@@ -22,11 +23,10 @@ router.get('/foods', function(req, res, next){
 });
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'foodExchange' });
+  res.render('index', { title: 'WasapFood' });
 });
 
-
-router.get('/offer', function(req, res, next) {
+router.get('/offer', ensureLogin.ensureLoggedIn(), function(req, res, next) {
   Food.find({isOffer: true}, (error, foods) => {
     if (error) {
       next(error);
@@ -36,7 +36,7 @@ router.get('/offer', function(req, res, next) {
   });
 });
 
-router.get('/search', function(req, res, next) {
+router.get('/search', ensureLogin.ensureLoggedIn(), function(req, res, next) {
   Food.find({isOffer: false}, (error, foods) => {
     if (error) {
       next(error);
@@ -56,3 +56,8 @@ router.get('/:id/delete', (req, res, next) => {
 });
 
 module.exports = router;
+
+
+// router.get("/search-offer", ensureLogin.ensureLoggedIn(), (req, res) => {
+//   res.render("users/search-offer", { user: req.user });
+// });
