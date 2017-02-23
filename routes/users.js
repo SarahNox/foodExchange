@@ -1,6 +1,7 @@
 const express        = require("express");
 const router         = express.Router();
 const User           = require("../models/user");
+const Food          = require("../models/food");
 const bcrypt         = require("bcrypt");
 const bcryptSalt     = 10;
 const ensureLogin = require("connect-ensure-login");
@@ -11,6 +12,10 @@ var app = express();
 router.get("/search-offer", ensureLogin.ensureLoggedIn(), (req, res) => {
   res.render("users/search-offer", { user: req.user });
 });
+
+// router.get("/offer", ensureLogin.ensureLoggedIn(), (req, res) => {
+//   res.render("users/offer", { user: req.user });
+// });
 
 router.get("/signup", (req, res, next) => {
   res.render("users/signup");
@@ -94,6 +99,37 @@ router.post("/address", (req, res, next) => {
     });
 });
 
+router.post("/offer", (req, res, next) => {
+
+
+  var foodName = req.body.foodName;
+
+  var address = {
+    street: req.body.street,
+    number: req.body.houseNumber,
+    postal_code: req.body.postal_code,
+    city: req.body.city
+  };
+
+  var location = {
+   type: 'Point',
+   coordinates: [req.body.longitude, req.body.latitude]
+ };
+
+      var newFood = Food({
+        foodName: foodName,
+        location: location,
+        address
+      });
+
+      newFood.save((err) => {
+        // console.log(err);
+        if (err) {
+          res.render("/offer", { message: "Dame argo paaayoooo!!" });
+        } else {
+            res.redirect("/offer")
+          }})
+        });
 
 
 router.get("/logout", (req, res) => {
