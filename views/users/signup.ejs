@@ -1,20 +1,20 @@
 <div class="container">
-<h1>Sign up</h1>
-<form action="/signup" method="POST" id="form-container">
-  <label for="username">Username</label>
-  <input type="text" name="username" placeholder="Your Username"></input>
-  <br><br>
-  <label for="password">Password</label>
-  <input type="password" name="password" placeholder="Your password"></input>
-  <% if (typeof(message) != "undefined") { %>
-    <div class="error-message"><%= message %></div>
-  <% } %>
-  <br><br>
-  <button class="btn btn-primary">Sign up</button>
-  <br><br>
-  <p class="account-message">
-    <a href="/login" class="btn btn-info">Login</a>
-    <a href="/" class="btn btn-default">Start Page</a>
-  </p>
-</form>
-</div>
+  <h1>Sign up</h1>
+  <form action="/signup" method="POST" id="form-container">
+    <label for="username">Username</label>
+    <input type="text" name="username" placeholder="Your Username"></input>
+    <br><br>
+    <label for="password">Password</label>
+    <input type="password" name="password" placeholder="Your password"></input>
+    <% if (typeof(message) != "undefined") { %>
+      <div class="error-message"><%= message %></div>
+      <% } %>
+      <br><br>
+      <button class="btn btn-primary">Sign up</button>
+      <br><br>
+      <p class="account-message">
+        <a href="/login" class="btn btn-info">Login</a>
+        <a href="/" class="btn btn-default">Start Page</a>
+      </p>
+    </form>
+  </div>
