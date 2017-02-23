@@ -12,7 +12,7 @@ We had a week with some stress and arguments but still fun about trying to finis
 
 ## Installation
 
-* npm install...
+* npm install
 * look at the package.json
 
 ## Implementation
@@ -34,4 +34,6 @@ We implemented the solution on a Javascript basis as suggested.
 
 ## Problems / Mistakes
 
-a lot! :D
+* time was not on our side
+* should have had a more planed structure/mock up in the beginning
+* restructured the app twice which took some time

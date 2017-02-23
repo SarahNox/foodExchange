@@ -77,7 +77,6 @@ $(document).ready(function(){
           lng: user.location.coordinates[0]
         };
         let icon = 'http://labs.google.com/ridefinder/images/mm_20_blue.png'
-        console.log(position);
 
         var pin = new google.maps.Marker({ position, title, icon });
         pin.setMap(map)
@@ -108,7 +107,6 @@ $(document).ready(function(){
         else {
          icon = 'http://labs.google.com/ridefinder/images/mm_20_green.png'
         }
-        console.log(position);
 
         var pin = new google.maps.Marker({ position, title, icon });
         pin.setMap(map)
