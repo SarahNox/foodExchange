@@ -1,8 +1,7 @@
-<div class="main-container">
   <h1>I'm offering...</h1>
-    <form action="/offer" method="POST" id="form-container">
-      <label for="product">Product</label>
-      <input type="text" name="foodName" placeholder="Type of Product"></input>
+  <form class="form" action="/offer" method="POST" id="form-container">
+    <label for="product">Product</label>
+    <input type="text" name="foodName" placeholder="Type of Product"></input>
     <div id="locationField">
       <input id="autocomplete" placeholder="Enter the product Address" onFocus="geolocate()" type="text"></input>
     </div>
@@ -53,11 +52,11 @@
     </table>
     <% if (typeof(message) != "undefined") { %>
       <div class="error-message"><%= message %></div>
-    <% } %>
-    <br><br>
-    <input class="btn btn-primary" type="submit" value="Confirm">
-    <br><br>
-  </form>
-  <a href="/search" class="btn btn-danger">Go to Search</a>
-  <a href="/search-offer" class="btn btn-default">MainPage</a>
-</div>
+      <% } %>
+      <br><br>
+      <input class="btn btn-primary" type="submit" value="Confirm">
+      <br><br>
+    </form>
+    <a href="/search" class="btn btn-danger">Go to Search</a>
+    <a href="/search-offer" class="btn btn-default">MainPage</a>
+  </div>
