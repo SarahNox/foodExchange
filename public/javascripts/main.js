@@ -15,9 +15,7 @@ function initAutocomplete() {
   autocomplete.addListener('place_changed', fillInAddress);
 }
 
-// [START region_fillform]
 function fillInAddress() {
-  // Get the place details from the autocomplete object.
   var place = autocomplete.getPlace();
   console.log(place);
 
@@ -36,8 +34,6 @@ function fillInAddress() {
     }
   }
 }
-
-// SHOW USERS
 
 $(document).ready(function(){
 
@@ -107,8 +103,13 @@ $(document).ready(function(){
           lat: food.location.coordinates[1],
           lng: food.location.coordinates[0]
         };
+        let icon;
+        if (food.isOffer === false) {
         // if search -> icon red, if offer -> icon green 'http://labs.google.com/ridefinder/images/mm_20_green.png'
-        let icon = 'http://labs.google.com/ridefinder/images/mm_20_green.png'
+        icon = 'http://labs.google.com/ridefinder/images/mm_20_red.png' }
+        else {
+         icon = 'http://labs.google.com/ridefinder/images/mm_20_green.png'
+        }
         console.log(position);
 
         var pin = new google.maps.Marker({ position, title, icon });

@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/offer', function(req, res, next) {
-  Food.find((error, foods) => {
+  Food.find({isOffer: true}, (error, foods) => {
     if (error) {
       next(error);
     } else {
@@ -37,7 +37,7 @@ router.get('/offer', function(req, res, next) {
 });
 
 router.get('/search', function(req, res, next) {
-  Food.find((error, foods) => {
+  Food.find({isOffer: false}, (error, foods) => {
     if (error) {
       next(error);
     } else {
@@ -47,10 +47,11 @@ router.get('/search', function(req, res, next) {
 });
 
 router.get('/:id/delete', (req, res, next) => {
+  console.log(req);
   const id = req.params.id;
   Food.findByIdAndRemove(id, (err, food) => {
     if (err){ return next(err); }
-    return res.redirect('/search-offer');
+    return res.redirect(req.get("referer"));
   });
 });
 
