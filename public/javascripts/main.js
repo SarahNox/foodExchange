@@ -113,7 +113,7 @@ $(document).ready(function(){
 
         var pin = new google.maps.Marker({ position, title, icon });
         pin.setMap(map)
-        markers.push(pin)
+        markersFood.push(pin)
       });
     },
     error: function(err){

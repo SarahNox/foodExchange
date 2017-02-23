@@ -13,7 +13,6 @@ const foodSchema = new Schema({
     postal_code: String,
   },
     location: { type: { type: String }, coordinates: [Number] }
-  // userSchema
 });
 
 const Food = mongoose.model("Food", foodSchema);

@@ -13,7 +13,7 @@ router.get('/api', function(req, res, next){
 });
 
 router.get('/foods', function(req, res, next){
-  User.find((err, foods) => {
+  Food.find((err, foods) => {
     if (err) { next(err); }
     else {
       res.json(foods);
@@ -25,13 +25,26 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'foodExchange' });
 });
 
-router.get('/search', function(req, res, next) {
-  res.render('users/search');
-});
 
 router.get('/offer', function(req, res, next) {
-  res.render('users/offer');
-});
+	  Food.find((error, foods) => {
+	  	if (error) {
+	  		next(error);
+	  	} else {
+	  		res.render('users/offer', { foods });
+	  	}
+	  });
+	});
+
+  router.get('/search', function(req, res, next) {
+  	  Food.find((error, foods) => {
+  	  	if (error) {
+  	  		next(error);
+  	  	} else {
+  	  		res.render('users/search', { foods });
+  	  	}
+  	  });
+  	});
 
 
 // food

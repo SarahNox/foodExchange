@@ -92,3 +92,7 @@ header {
   float: left;
   text-align: center;
 }
+
+li {
+  padding: 5px;
+}
