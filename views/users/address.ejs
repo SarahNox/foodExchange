@@ -1,14 +1,14 @@
 <div class="container">
   <h1>Please add our address</h1>
-    <form action="/address" method="POST" id="form-container">
-    <div id="locationField">
+    <form action="/address" method="POST" id="form-container" class="form-horizontal">
+    <div id="locationField" class"form-group">
       <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
     </div>
     <table id="address">
       <tr>
         <td class="label">Street address</td>
         <td class="slimField">
-          <input class="field" id="street_number" disabled="true" name="houseNumber"></input>
+          <input class="field" id="street_number"  name="houseNumber"></input>
         </td>
         <td class="wideField" colspan="2">
           <input class="field" id="route" name="street"></input>
@@ -23,7 +23,7 @@
       <tr>
         <td class="label">State</td>
         <td class="slimField">
-          <input class="field" id="administrative_area_level_1" disabled="true"></input>
+          <input class="field" id="administrative_area_level_1"></input>
         </td>
         <td class="label">Zip code</td>
         <td class="wideField">
@@ -36,18 +36,8 @@
           <input class="field" id="country"></input>
         </td>
       </tr>
-      <tr>
-        <td class="label">Latitude</td>
-        <td class="wideField" colspan="3">
-          <input class="field" id="latitude" name="latitude"></input>
-        </td>
-      </tr>
-      <tr>
-        <td class="label">Longitude</td>
-        <td class="wideField" colspan="3">
-          <input class="field" id="longitude" name="longitude"></input>
-        </td>
-      </tr>
+          <input class="field" id="latitude" name="latitude" type="hidden"></input>
+          <input class="field" id="longitude" name="longitude" type="hidden"></input>
     </table>
     <% if (typeof(message) != "undefined") { %>
       <div class="error-message"><%= message %></div>

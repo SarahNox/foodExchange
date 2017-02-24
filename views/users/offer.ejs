@@ -39,18 +39,8 @@
             <input class="field" id="country"></input>
           </td>
         </tr>
-        <tr>
-          <td class="label">Latitude</td>
-          <td class="wideField" colspan="3">
-            <input class="field" id="latitude" name="latitude"></input>
-          </td>
-        </tr>
-        <tr>
-          <td class="label">Longitude</td>
-          <td class="wideField" colspan="3">
-            <input class="field" id="longitude" name="longitude"></input>
-          </td>
-        </tr>
+        <input class="field" id="latitude" name="latitude" type="hidden"></input>
+        <input class="field" id="longitude" name="longitude" type="hidden"></input>
       </table>
       <% if (typeof(message) != "undefined") { %>
         <div class="error-message"><%= message %></div>
