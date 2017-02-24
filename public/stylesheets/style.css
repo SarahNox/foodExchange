@@ -8,6 +8,10 @@ a {
   position: relative;
 }
 
+button {
+  
+}
+
 #map {
  height: 500px;
  width: 80%;
@@ -65,7 +69,12 @@ a {
 }
 
 h3 {
-   text-align: center; 
+   text-align: center;
+}
+
+p {
+  padding: 20px 0 20px 10px;
+  line-height: 30px;
 }
 
 header {

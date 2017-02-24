@@ -78,7 +78,6 @@ router.post("/address", (req, res, next) => {
   });
 
   newUser.save((err) => {
-    // console.log(err);
     if (err) {
       res.render("users/address", { message: "It´s necessary" });
     } else {
@@ -116,7 +115,6 @@ router.post("/offer", (req, res, next) => {
   });
 
   newFood.save((err) => {
-    // console.log(err);
     if (err) {
       res.render("/offer", { message: "Dame argo paaayoooo!!" });
     } else {
