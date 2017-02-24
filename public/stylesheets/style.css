@@ -110,3 +110,8 @@ li {
   font-size: 20px;
   border-bottom: 1px solid;
 }
+
+.middle {
+  text-align: center;
+  padding-top: 20px;
+}
