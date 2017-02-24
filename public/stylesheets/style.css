@@ -9,7 +9,7 @@ a {
 }
 
 button {
-  
+
 }
 
 #map {
@@ -74,7 +74,8 @@ h3 {
 
 p {
   padding: 20px 0 20px 10px;
-  line-height: 30px;
+  line-height: 40px;
+  font-size: 20px;
 }
 
 header {
