@@ -8,9 +8,6 @@ a {
   position: relative;
 }
 
-button {
-
-}
 
 #map {
  height: 500px;
@@ -31,6 +28,10 @@ button {
   width: 99%;
 }
 
+form{
+  width: 100%;
+}
+
 .label {
   text-align: center;
   font-weight: bold;
@@ -42,7 +43,7 @@ button {
 #address {
   border: 1px solid #000090;
   /*background-color: #f0f0ff;*/
-  width: 480px;
+  width: 100%;
   padding-right: 2px;
 }
 
@@ -70,6 +71,7 @@ button {
 
 h3 {
    text-align: center;
+   padding-right:  20px;
 }
 
 p {
@@ -114,4 +116,15 @@ li {
 .middle {
   text-align: center;
   padding-top: 20px;
+}
+
+.left_middle {
+  text-align: left;
+  padding-top: 20px;
+}
+
+@media (min-width: 1000px) {
+  #form-container{
+    width: 50%;
+  }
 }

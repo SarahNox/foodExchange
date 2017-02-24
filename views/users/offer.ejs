@@ -1,66 +1,73 @@
-<div class="col-md-5 blog-main">
-  <div class="container">
-    <h1>I'm offering...</h1>
-    <form class="form" action="/offer" method="POST" id="form-container">
-      <label for="product">Product</label>
-      <input type="text" name="foodName" placeholder="Type of Product"></input>
-      <div id="locationField">
-        <input id="autocomplete" placeholder="Enter the product Address" onFocus="geolocate()" type="text"></input>
+<div class="row">
+  <div class="col-md-5 blog-main">
+    <div class="container">
+      <h1>I'm offering...</h1>
+      <form class="form" action="/offer" method="POST" id="form-container">
+        <label for="product">Product</label>
+        <input type="text" name="foodName" placeholder="Type of Product"></input>
+        <div id="locationField">
+          <input id="autocomplete" placeholder="Enter the product Address" onFocus="geolocate()" type="text"></input>
+        </div>
+        <table id="address">
+          <tr>
+            <td class="label">Street address</td>
+            <td class="slimField">
+              <input class="field" id="street_number" disabled="true" name="houseNumber"></input>
+            </td>
+            <td class="wideField" colspan="2">
+              <input class="field" id="route" name="street"></input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">City</td>
+            <td class="wideField" colspan="3">
+              <input class="field" id="locality" name="city"></input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">State</td>
+            <td class="slimField">
+              <input class="field" id="administrative_area_level_1" disabled="true"></input>
+            </td>
+            <td class="label">Zip code</td>
+            <td class="wideField">
+              <input class="field" id="postal_code" name="postal_code"></input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">Country</td>
+            <td class="wideField" colspan="3">
+              <input class="field" id="country"></input>
+            </td>
+          </tr>
+          <input class="field" id="latitude" name="latitude" type="hidden"></input>
+          <input class="field" id="longitude" name="longitude" type="hidden"></input>
+        </table>
+        <% if (typeof(message) != "undefined") { %>
+          <div class="error-message"><%= message %></div>
+          <% } %>
+          <br><br>
+          <input class="btn btn-primary" type="submit" value="Confirm">
+          <input type="hidden" value="true" name="isOffer">
+          <br><br>
+        </form>
+        <a href="/search" class="btn btn-danger">Go to Search</a>
       </div>
-      <table id="address">
-        <tr>
-          <td class="label">Street address</td>
-          <td class="slimField">
-            <input class="field" id="street_number" disabled="true" name="houseNumber"></input>
-          </td>
-          <td class="wideField" colspan="2">
-            <input class="field" id="route" name="street"></input>
-          </td>
-        </tr>
-        <tr>
-          <td class="label">City</td>
-          <td class="wideField" colspan="3">
-            <input class="field" id="locality" name="city"></input>
-          </td>
-        </tr>
-        <tr>
-          <td class="label">State</td>
-          <td class="slimField">
-            <input class="field" id="administrative_area_level_1" disabled="true"></input>
-          </td>
-          <td class="label">Zip code</td>
-          <td class="wideField">
-            <input class="field" id="postal_code" name="postal_code"></input>
-          </td>
-        </tr>
-        <tr>
-          <td class="label">Country</td>
-          <td class="wideField" colspan="3">
-            <input class="field" id="country"></input>
-          </td>
-        </tr>
-        <input class="field" id="latitude" name="latitude" type="hidden"></input>
-        <input class="field" id="longitude" name="longitude" type="hidden"></input>
-      </table>
-      <% if (typeof(message) != "undefined") { %>
-        <div class="error-message"><%= message %></div>
-        <% } %>
-        <br><br>
-        <input class="btn btn-primary" type="submit" value="Confirm">
-        <input type="hidden" value="true" name="isOffer">
-        <br><br>
-      </form>
-      <a href="/search" class="btn btn-danger">Go to Search</a>
+    </div>
+
+
+    <div class="right">
+    <div class="col-md-5 col-md-offset-2 blog-sidebar">
+      <h1>my current offers</h1>
+      <ul>
+        <% foods.forEach((food) => { %>
+          <li>
+            <%= food.foodName %><br><br>
+            <a class="btn btn-danger btn-sm" href="/<%= food._id %>/delete/">Delete Item</a>
+          </li>
+        <% }) %>
+      </ul>
     </div>
   </div>
-  <div class="col-md-5 col-md-offset-2 blog-sidebar">
-    <h1>my current offers</h1>
-    <ul>
-      <% foods.forEach((food) => { %>
-        <li>
-          <%= food.foodName %><br><br>
-          <a class="btn btn-danger btn-sm" href="/<%= food._id %>/delete/">Delete Item</a>
-        </li>
-      <% }) %>
-    </ul>
-  </div>
+
+</div>
