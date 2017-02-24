@@ -11,7 +11,11 @@ const MongoStore         = require('connect-mongo')(session);
 const mongoose           = require('mongoose');
 const flash              = require('connect-flash');
 
-mongoose.connect('mongodb://localhost:27017/foodExchange');
+require("dotenv").config();
+
+mongoose.connect(process.env.MONGODB_URI);
+
+// mongoose.connect('mongodb://localhost:27017/foodExchange');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
