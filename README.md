@@ -34,6 +34,6 @@ We implemented the solution on a Javascript basis as suggested.
 
 ## Problems / Mistakes
 
-* time was not on our side
 * should have had a more planed structure/mock up in the beginning
 * restructured the app twice which took some time
+* lost in translation
