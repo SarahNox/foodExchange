@@ -13,7 +13,8 @@ We had a week with some stress and arguments but still fun about trying to finis
 ## Installation
 
 * npm install
-* look at the package.json
+* look at the package.json and install missing dependencies.
+* should work now. If not: please message one of us
 
 ## Implementation
 
@@ -37,3 +38,4 @@ We implemented the solution on a Javascript basis as suggested.
 * should have had a more planed structure/mock up in the beginning
 * restructured the app twice which took some time
 * lost in translation
+* too much html, could be cleaner/less
